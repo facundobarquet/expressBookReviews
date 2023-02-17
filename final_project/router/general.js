@@ -76,20 +76,20 @@ public_users.get('/author/:author',function (req, res) {
 });
 
 //Promise
-public_users.get('/books/title/:title',function (req, res) {
-    const get_books_title = new Promise((resolve, reject) => {
-        resolve( title = req.params.title);
+public_users.get('/books/author/:author',function (req, res) {
+    const get_books_author = new Promise((resolve, reject) => {
+        resolve( author = req.params.author);
       });
       const booksArray = Object.entries(books);
-      let titleBooks = {} ;
-      get_books_title.then((title) =>{
+      let authorBooks = {} ;
+      get_books_author.then((author) =>{
         for (const [key, book] of booksArray) {
-            if (book.title == title){
-                titleBooks[key] = book;
+            if (book.author == author){
+                authorBooks[key] = book;
             }
         }
-        if (Object.keys(titleBooks).length != 0){
-            res.send(titleBooks)
+        if (Object.keys(authorBooks).length != 0){
+            res.send(authorBooks)
         }else{
             res.status(404).json({message: "Book not found"}) 
         }
@@ -115,20 +115,20 @@ public_users.get('/title/:title',function (req, res) {
 });
 
 //Promise
-public_users.get('/books/author/:author',function (req, res) {
-    const get_books_author = new Promise((resolve, reject) => {
-        resolve( author = req.params.author);
+public_users.get('/books/title/:title',function (req, res) {
+    const get_books_title = new Promise((resolve, reject) => {
+        resolve( title = req.params.title);
       });
       const booksArray = Object.entries(books);
-      let authorBooks = {} ;
-      get_books_author.then((author) =>{
+      let titleBooks = {} ;
+      get_books_title.then((title) =>{
         for (const [key, book] of booksArray) {
-            if (book.author == author){
-                authorBooks[key] = book;
+            if (book.title == title){
+                titleBooks[key] = book;
             }
         }
-        if (Object.keys(authorBooks).length != 0){
-            res.send(authorBooks)
+        if (Object.keys(titleBooks).length != 0){
+            res.send(titleBooks)
         }else{
             res.status(404).json({message: "Book not found"}) 
         }
